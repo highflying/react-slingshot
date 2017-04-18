@@ -3,10 +3,10 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { browserHistory } from 'react-router';
-import Root from './components/Root';
 
-import configureStore from './store/configureStore';
+import Root from './components/Root';
+import configureStore, { history } from './store/configureStore';
+
 // tslint:disable-next-line:no-var-requires
 require('./favicon.ico'); // Tell webpack to load favicon.ico
 
@@ -14,12 +14,7 @@ require('./favicon.ico'); // Tell webpack to load favicon.ico
 // the page.
 import './styles/styles.scss';
 
-import { syncHistoryWithStore } from 'react-router-redux';
-
 const store = configureStore({});
-
-// Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(browserHistory as any, store);
 
 render(
   <AppContainer>

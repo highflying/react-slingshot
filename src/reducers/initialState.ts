@@ -2,19 +2,19 @@ import { IState } from '../interfaces';
 
 export default {
   fuelSavings: {
-    dateModified: null,
+    dateModified: '',
     displayResults: false,
-    milesDriven: null,
+    milesDriven: 0,
     milesDrivenTimeframe: 'week',
     necessaryDataIsProvidedToCalculateSavings: false,
-    newMpg: null,
-    newPpg: null,
+    newMpg: 0,
+    newPpg: 0,
     savings: {
-      annual: null,
-      monthly: null,
-      threeYear: null,
+      annual: '',
+      monthly: '',
+      threeYear: '',
     },
-    tradeMpg: null,
-    tradePpg: null,
+    tradeMpg: 0,
+    tradePpg: 0,
   },
 } as IState;

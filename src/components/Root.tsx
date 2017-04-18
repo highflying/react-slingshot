@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
-import routes from '../routes';
+import { ConnectedRouter } from 'react-router-redux';
+import App from './App';
 
 interface IOwnProps {
   store: any;
@@ -13,7 +14,9 @@ export default class Root extends React.Component<IOwnProps, {}> {
     const { store, history } = this.props;
     return (
       <Provider store={store}>
-        <Router history={history} routes={routes} />
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
       </Provider>
     );
   }

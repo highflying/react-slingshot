@@ -1,6 +1,6 @@
 import * as objectAssign from 'object-assign';
 import {CALCULATE_FUEL_SAVINGS, SAVE_FUEL_SAVINGS} from '../constants/actionTypes';
-import { IFuelSavingsAction, IStateFuelSavings } from '../interfaces';
+import { ICalcFuelSavingsAction, ISaveFuelSavingsAction, IStateFuelSavings } from '../interfaces';
 import FuelSavingsCalculator from '../utils/fuelSavingsCalculator';
 import initialState from './initialState';
 
@@ -9,7 +9,10 @@ import initialState from './initialState';
 // create a copy of the state passed and set new values on the copy.
 // Note that I'm using Object.assign to create a copy of current state
 // and update values on the copy.
-export default function fuelSavingsReducer(state = initialState.fuelSavings, action: IFuelSavingsAction) {
+export default function fuelSavingsReducer(
+  state = initialState.fuelSavings,
+  action: ICalcFuelSavingsAction | ISaveFuelSavingsAction,
+) {
   let newState: IStateFuelSavings;
 
   switch (action.type) {
@@ -19,8 +22,10 @@ export default function fuelSavingsReducer(state = initialState.fuelSavings, act
       return objectAssign({}, state, {dateModified: action.dateModified});
 
     case CALCULATE_FUEL_SAVINGS:
+      const calcAction = action as ICalcFuelSavingsAction;
+
       newState = objectAssign({}, state) as IStateFuelSavings;
-      newState[action.fieldName] = action.value;
+      newState[calcAction.fieldName] = calcAction.value;
 
       newState.necessaryDataIsProvidedToCalculateSavings
         = FuelSavingsCalculator.necessaryDataIsProvidedToCalculateSavings(newState);

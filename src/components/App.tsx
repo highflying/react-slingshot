@@ -1,6 +1,10 @@
 import * as React from 'react';
-// import PropTypes from 'prop-types';
-import { IndexLink, Link } from 'react-router';
+import { Route } from 'react-router';
+import { NavLink, Switch } from 'react-router-dom';
+import FuelSavingsPage from '../containers/FuelSavingsPage';
+import AboutPage from './AboutPage';
+import HomePage from './HomePage';
+import NotFoundPage from './NotFoundPage';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -10,20 +14,25 @@ interface IOwnProps {
   children: JSX.Element;
 }
 
-class App extends React.Component<{}, {}> {
+export default class App extends React.Component<{}, {}> {
   public render() {
+    const activeStyle = { color: 'blue' };
+
     return (
       <div>
-        <IndexLink to="/">Home</IndexLink>
+        <NavLink exact={true} to="/" activeStyle={activeStyle}>Home</NavLink>
         {' | '}
-        <Link to="/fuel-savings">Demo App</Link>
+        <NavLink to="/fuel-savings" activeStyle={activeStyle}>Demo App</NavLink>
         {' | '}
-        <Link to="/about">About</Link>
+        <NavLink to="/about" activeStyle={activeStyle}>About</NavLink>
         <br/>
-        {this.props.children}
+        <Switch>
+          <Route exact={true} path="/" component={HomePage} />
+           <Route path="/fuel-savings" component={FuelSavingsPage as any} />
+           <Route path="/about" component={AboutPage} />
+           <Route component={NotFoundPage} />
+         </Switch>
       </div>
     );
   }
 }
-
-export default App;

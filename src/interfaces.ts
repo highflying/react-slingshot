@@ -30,9 +30,16 @@ export interface IState {
   fuelSavings: IStateFuelSavings;
 }
 
-export interface IFuelSavingsAction {
-  dateModified?: string;
-  fieldName?: string;
-  value?: number | string;
+export interface ISaveFuelSavingsAction {
+  dateModified: string;
   type: string;
+  settings: IFuelSavings;
+}
+
+export interface ICalcFuelSavingsAction {
+  dateModified: string;
+  fieldName: string;
+  value: number | string;
+  type: string;
+  settings: IFuelSavings;
 }

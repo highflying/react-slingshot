@@ -1,15 +1,22 @@
+import createHistory from 'history/createBrowserHistory';
+import { routerMiddleware } from 'react-router-redux';
 import {applyMiddleware, compose, createStore} from 'redux';
-import * as reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
+import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 
+export const history = createHistory();
+
 function configureStoreProd(initialState: object) {
+  const reactRouterMiddleware = routerMiddleware(history as any);
+
   const middlewares = [
     // Add other middleware on this line...
 
     // thunk middleware can also accept an extra argument to be passed to each thunk action
     // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
     thunk,
+    reactRouterMiddleware,
   ];
 
   return createStore(rootReducer, initialState, compose(
@@ -19,6 +26,8 @@ function configureStoreProd(initialState: object) {
 }
 
 function configureStoreDev(initialState: object) {
+  const reactRouterMiddleware = routerMiddleware(history as any);
+
   const middlewares = [
     // Add other middleware on this line...
 
@@ -29,6 +38,7 @@ function configureStoreDev(initialState: object) {
     // thunk middleware can also accept an extra argument to be passed to each thunk action
     // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
     thunk,
+    reactRouterMiddleware,
   ];
 
   // add support for Redux dev tools

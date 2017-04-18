@@ -13,7 +13,7 @@ describe('<FuelSavingsForm />', () => {
     const calculateFuelSavings: any = () => {};
 
     const fuelSavings: IStateFuelSavings = {
-      dateModified: null,
+      dateModified: '',
       displayResults: false,
       milesDriven: 100,
       milesDrivenTimeframe: 'week',
@@ -21,9 +21,9 @@ describe('<FuelSavingsForm />', () => {
       newMpg: 20,
       newPpg: 1.50,
       savings: {
-        annual: null,
-        monthly: null,
-        threeYear: null,
+        annual: '',
+        monthly: '',
+        threeYear: '',
       },
       tradeMpg: 10,
       tradePpg: 1.50,
@@ -58,7 +58,7 @@ describe('<FuelSavingsForm />', () => {
     const calculateFuelSavings: any = () => {};
 
     const fuelSavings: IStateFuelSavings = {
-      dateModified: null,
+      dateModified: '',
       displayResults: false,
       milesDriven: 100,
       milesDrivenTimeframe: 'week',
@@ -66,9 +66,9 @@ describe('<FuelSavingsForm />', () => {
       newMpg: 20,
       newPpg: 1.50,
       savings: {
-        annual: null,
-        monthly: null,
-        threeYear: null,
+        annual: '',
+        monthly: '',
+        threeYear: '',
       },
       tradeMpg: 10,
       tradePpg: 1.50,
@@ -97,7 +97,7 @@ describe('<FuelSavingsForm />', () => {
     const calculateFuelSavings: any = () => {};
 
     const fuelSavings: IStateFuelSavings = {
-      dateModified: null,
+      dateModified: '',
       displayResults: false,
       milesDriven: 100,
       milesDrivenTimeframe: 'week',
@@ -132,7 +132,7 @@ describe('<FuelSavingsForm />', () => {
     const calculateFuelSavings: any = () => {};
 
     const fuelSavings: IStateFuelSavings = {
-      dateModified: null,
+      dateModified: '',
       displayResults: false,
       milesDriven: 100,
       milesDrivenTimeframe: 'week',
@@ -140,9 +140,9 @@ describe('<FuelSavingsForm />', () => {
       newMpg: 20,
       newPpg: 1.50,
       savings: {
-        annual: null,
-        monthly: null,
-        threeYear: null,
+        annual: '',
+        monthly: '',
+        threeYear: '',
       },
       tradeMpg: 10,
       tradePpg: 1.50,
@@ -166,7 +166,7 @@ describe('<FuelSavingsForm />', () => {
     const calculateFuelSavings: any = () => {};
 
     const fuelSavings: IStateFuelSavings = {
-      dateModified: null,
+      dateModified: '',
       displayResults: false,
       milesDriven: 100,
       milesDrivenTimeframe: 'week',
@@ -174,9 +174,9 @@ describe('<FuelSavingsForm />', () => {
       newMpg: 20,
       newPpg: 1.50,
       savings: {
-        annual: null,
-        monthly: null,
-        threeYear: null,
+        annual: '',
+        monthly: '',
+        threeYear: '',
       },
       tradeMpg: 10,
       tradePpg: 1.50,
@@ -201,7 +201,7 @@ describe('<FuelSavingsForm />', () => {
     const calculateFuelSavings: any = () => {};
 
     const fuelSavings: IStateFuelSavings = {
-      dateModified: null,
+      dateModified: '',
       displayResults: false,
       milesDriven: 100,
       milesDrivenTimeframe: 'week',
@@ -209,9 +209,9 @@ describe('<FuelSavingsForm />', () => {
       newMpg: 20,
       newPpg: 1.50,
       savings: {
-        annual: null,
-        monthly: null,
-        threeYear: null,
+        annual: '',
+        monthly: '',
+        threeYear: '',
       },
       tradeMpg: 10,
       tradePpg: 1.50,
@@ -235,7 +235,7 @@ describe('<FuelSavingsForm />', () => {
     const calculateFuelSavings: any = jest.fn();
 
     const fuelSavings: IStateFuelSavings = {
-      dateModified: null,
+      dateModified: '',
       displayResults: false,
       milesDriven: 100,
       milesDrivenTimeframe: 'week',
@@ -243,9 +243,9 @@ describe('<FuelSavingsForm />', () => {
       newMpg: 20,
       newPpg: 1.50,
       savings: {
-        annual: null,
-        monthly: null,
-        threeYear: null,
+        annual: '',
+        monthly: '',
+        threeYear: '',
       },
       tradeMpg: 10,
       tradePpg: 1.50,
@@ -270,7 +270,7 @@ describe('<FuelSavingsForm />', () => {
     const calculateFuelSavings: any = jest.fn();
 
     const fuelSavings: IStateFuelSavings = {
-      dateModified: null,
+      dateModified: '',
       displayResults: false,
       milesDriven: 100,
       milesDrivenTimeframe: 'week',
@@ -278,9 +278,9 @@ describe('<FuelSavingsForm />', () => {
       newMpg: 20,
       newPpg: 1.50,
       savings: {
-        annual: null,
-        monthly: null,
-        threeYear: null,
+        annual: '',
+        monthly: '',
+        threeYear: '',
       },
       tradeMpg: 10,
       tradePpg: 1.50,
