@@ -1,16 +1,16 @@
 import * as React from 'react';
-import {ISavings, IStateFuelSavings } from '../interfaces';
+import {Savings, StateFuelSavings } from '../interfaces';
 import FuelSavingsResults from './FuelSavingsResults';
 import FuelSavingsTextInput from './FuelSavingsTextInput';
 
-interface IOwnProps {
-  fuelSavings: IStateFuelSavings;
-  calculateFuelSavings: (fuelSavings: IStateFuelSavings, name: string, value: any) => never;
-  saveFuelSavings: (fuelSavings: IStateFuelSavings) => never;
+interface OwnProps {
+  fuelSavings: StateFuelSavings;
+  calculateFuelSavings: (fuelSavings: StateFuelSavings, name: string, value: any) => void;
+  saveFuelSavings: (fuelSavings: StateFuelSavings) => void;
 }
 
-class FuelSavingsForm extends React.Component<IOwnProps, {}> {
-  constructor(props: IOwnProps, context: object) {
+class FuelSavingsForm extends React.Component<OwnProps, {}> {
+  constructor(props: OwnProps, context: object) {
     super(props, context);
 
     this.save = this.save.bind(this);

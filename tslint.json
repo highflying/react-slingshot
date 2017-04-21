@@ -1,11 +1,13 @@
 {
-  "extends": ["tslint:recommended", "tslint-react"],
+  "extends": ["tslint:recommended", "tslint-react", "tslint-eslint-rules"],
   "rules": {
     "quotemark": [true, "single", "jsx-double"],
     "object-literal-sort-keys": false,
-    "ter-indent": [
-      true, 2, {"MemberExpression": 2}
+    "block-spacing": [
+      true,
+      "always"
     ],
-    "no-unused-variable": true
+    "no-unused-variable": true,
+    "interface-name": [true, "never-prefix"]
   }
 }

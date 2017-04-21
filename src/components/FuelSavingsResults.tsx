@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ISavings } from '../interfaces';
+import { Savings } from '../interfaces';
 import NumberFormatter from '../utils/numberFormatter';
 
-export default function FuelSavingsResults({ savings }: {savings: ISavings}) {
+export default function FuelSavingsResults({ savings }: {savings: Savings}) {
   const savingsExist = parseInt(NumberFormatter.scrubFormatting(savings.monthly), 10) > 0;
   const savingsClass = savingsExist ? 'savings' : 'loss';
   const resultLabel = savingsExist ? 'Savings' : 'Loss';

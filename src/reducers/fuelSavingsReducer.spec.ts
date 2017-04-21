@@ -1,26 +1,26 @@
 import * as ActionTypes from '../constants/actionTypes';
-import { IStateFuelSavings } from '../interfaces';
+import { StateFuelSavings } from '../interfaces';
 import {getFormattedDateTime} from '../utils/dateHelper';
 import reducer from './fuelSavingsReducer';
 
 describe('Reducers::FuelSavings', () => {
   const getInitialState = () => {
-    return  {
-      dateModified: null,
+    return {
+      dateModified: '',
       displayResults: false,
-      milesDriven: null,
+      milesDriven: 0,
       milesDrivenTimeframe: 'week',
       necessaryDataIsProvidedToCalculateSavings: false,
-      newMpg: null,
-      newPpg: null,
+      newMpg: 0,
+      newPpg: 0,
       savings: {
-        annual: null,
-        monthly: null,
-        threeYear: null,
+        annual: '',
+        monthly: '',
+        threeYear: '',
       },
-      tradeMpg: null,
-      tradePpg: null,
-    } as IStateFuelSavings;
+      tradeMpg: 0,
+      tradePpg: 0,
+    } as StateFuelSavings;
   };
 
   const getAppState = () => {
@@ -39,7 +39,7 @@ describe('Reducers::FuelSavings', () => {
       },
       tradeMpg: 10,
       tradePpg: 1.50,
-    } as IStateFuelSavings;
+    } as StateFuelSavings;
   };
   const dateModified = getFormattedDateTime();
 
@@ -47,22 +47,26 @@ describe('Reducers::FuelSavings', () => {
     const action = { type: 'unknown' };
     const expected = getInitialState();
 
-    expect(reducer(undefined, action)).toEqual(expected);
+    expect(reducer(undefined, action as any)).toEqual(expected);
   });
 
   it('should handle SAVE_FUEL_SAVINGS', () => {
-    const action = { type: ActionTypes.SAVE_FUEL_SAVINGS, dateModified, settings: getAppState() };
-    const expected = Object.assign(getAppState(), { dateModified }) as IStateFuelSavings;
+    const action: ActionTypes.SaveFuelSavingsAction = {
+      type: ActionTypes.SAVE_FUEL_SAVINGS,
+      dateModified,
+      settings: getAppState(),
+    };
+    const expected = Object.assign(getAppState(), { dateModified }) as StateFuelSavings;
 
     expect(reducer(getAppState(), action)).toEqual(expected);
   });
 
   it('should handle CALCULATE_FUEL_SAVINGS', () => {
-    const action = {
-      dateModified,
-      fieldName: 'newMpg',
-      settings: getAppState(),
+    const action: ActionTypes.CalcFuelSavingsAction = {
       type: ActionTypes.CALCULATE_FUEL_SAVINGS,
+      dateModified,
+      settings: getAppState(),
+      fieldName: 'newMpg',
       value: 30,
     };
 

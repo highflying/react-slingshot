@@ -1,4 +1,4 @@
-export interface IFuelSavings {
+export interface FuelSavings {
   milesDriven: number;
   tradePpg: number;
   tradeMpg: number;
@@ -7,13 +7,13 @@ export interface IFuelSavings {
   milesDrivenTimeframe: string;
 }
 
-export interface ISavings {
+export interface Savings {
   monthly: string;
   annual: string;
   threeYear: string;
 }
 
-export interface IStateFuelSavings {
+export interface StateFuelSavings {
   milesDriven: number;
   milesDrivenTimeframe: string;
   dateModified: string;
@@ -22,24 +22,24 @@ export interface IStateFuelSavings {
   tradeMpg: number;
   newPpg: number;
   tradePpg: number;
-  savings: ISavings;
-  [key: string]: number | string | boolean | ISavings;
+  savings: Savings;
+  [key: string]: number | string | boolean | Savings;
 }
 
-export interface IState {
-  fuelSavings: IStateFuelSavings;
+export interface State {
+  fuelSavings: StateFuelSavings;
 }
 
-export interface ISaveFuelSavingsAction {
-  dateModified: string;
-  type: string;
-  settings: IFuelSavings;
-}
+// export interface SaveFuelSavingsAction {
+//   type: SaveFuelSavings;
+//   dateModified: string;
+//   settings: FuelSavings;
+// }
 
-export interface ICalcFuelSavingsAction {
-  dateModified: string;
-  fieldName: string;
-  value: number | string;
-  type: string;
-  settings: IFuelSavings;
-}
+// export interface CalcFuelSavingsAction {
+//   type: CalculateFuelSavings;
+//   dateModified: string;
+//   settings: FuelSavings;
+//   fieldName: string;
+//   value: number | string;
+// }

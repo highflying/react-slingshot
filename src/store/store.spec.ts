@@ -3,7 +3,7 @@ import * as ActionTypes from '../constants/actionTypes';
 import * as MockDate from 'mockdate';
 import { createStore } from 'redux';
 
-import { IFuelSavings, ISavings, IState, IStateFuelSavings } from '../interfaces';
+import { FuelSavings, Savings, State, StateFuelSavings } from '../interfaces';
 import rootReducer from '../reducers';
 import initialState from '../reducers/initialState';
 import {getFormattedDateTime} from '../utils/dateHelper';
@@ -65,8 +65,8 @@ describe('Store', () => {
     ];
     actions.forEach((action) => store.dispatch(action));
 
-    const actual = store.getState() as IState;
-    const expected: IStateFuelSavings = {
+    const actual = store.getState() as State;
+    const expected: StateFuelSavings = {
       newMpg: 20,
       tradeMpg: 10,
       newPpg: 1.50,
@@ -132,19 +132,19 @@ describe('Store', () => {
 
     actions.forEach((action) => store.dispatch(action));
 
-    const actual = store.getState() as IState;
+    const actual = store.getState() as State;
 
-    const expected: IStateFuelSavings = {
+    const expected: StateFuelSavings = {
       newMpg: 20,
       tradeMpg: 10,
-      newPpg: null,
+      newPpg: 0,
       tradePpg: 1.5,
       milesDriven: 100,
       milesDrivenTimeframe: 'month',
       displayResults: false,
       dateModified,
       necessaryDataIsProvidedToCalculateSavings: false,
-      savings: { annual: null, monthly: null, threeYear: null },
+      savings: { annual: '', monthly: '', threeYear: '' },
     };
 
     expect(actual.fuelSavings).toEqual(expected);
@@ -182,8 +182,10 @@ describe('Store', () => {
         type: ActionTypes.CALCULATE_FUEL_SAVINGS,
         dateModified, settings: store.getState(), fieldName: 'newPpg', value: 1.50 },
 
-           { type: ActionTypes.SAVE_FUEL_SAVINGS,
-        dateModified, settings: store.getState() },
+      {
+        type: ActionTypes.SAVE_FUEL_SAVINGS,
+        dateModified, settings: store.getState(),
+      },
       {
         type: ActionTypes.CALCULATE_FUEL_SAVINGS,
         dateModified, settings: store.getState(), fieldName: 'tradePpg', value: 1.50 },
@@ -223,7 +225,7 @@ describe('Store', () => {
 
     moreActions.forEach((action) => store.dispatch(action));
 
-    const actual = store.getState() as IState;
+    const actual = store.getState() as State;
     // const expected = {
     //  newMpg: 20,
     //  tradeMpg: 10,

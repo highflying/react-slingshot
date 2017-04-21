@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import { IStateFuelSavings } from '../interfaces';
+import { StateFuelSavings } from '../interfaces';
 import FuelSavingsForm from './FuelSavingsForm';
 import FuelSavingsResults from './FuelSavingsResults';
 import FuelSavingsTextInput from './FuelSavingsTextInput';
@@ -12,7 +12,7 @@ describe('<FuelSavingsForm />', () => {
     // tslint:disable-next-line:no-empty
     const calculateFuelSavings: any = () => {};
 
-    const fuelSavings: IStateFuelSavings = {
+    const fuelSavings: StateFuelSavings = {
       dateModified: '',
       displayResults: false,
       milesDriven: 100,
@@ -57,7 +57,7 @@ describe('<FuelSavingsForm />', () => {
     // tslint:disable-next-line:no-empty
     const calculateFuelSavings: any = () => {};
 
-    const fuelSavings: IStateFuelSavings = {
+    const fuelSavings: StateFuelSavings = {
       dateModified: '',
       displayResults: false,
       milesDriven: 100,
@@ -96,7 +96,7 @@ describe('<FuelSavingsForm />', () => {
     // tslint:disable-next-line:no-empty
     const calculateFuelSavings: any = () => {};
 
-    const fuelSavings: IStateFuelSavings = {
+    const fuelSavings: StateFuelSavings = {
       dateModified: '',
       displayResults: false,
       milesDriven: 100,
@@ -131,7 +131,7 @@ describe('<FuelSavingsForm />', () => {
     // tslint:disable-next-line:no-empty
     const calculateFuelSavings: any = () => {};
 
-    const fuelSavings: IStateFuelSavings = {
+    const fuelSavings: StateFuelSavings = {
       dateModified: '',
       displayResults: false,
       milesDriven: 100,
@@ -165,7 +165,7 @@ describe('<FuelSavingsForm />', () => {
     // tslint:disable-next-line:no-empty
     const calculateFuelSavings: any = () => {};
 
-    const fuelSavings: IStateFuelSavings = {
+    const fuelSavings: StateFuelSavings = {
       dateModified: '',
       displayResults: false,
       milesDriven: 100,
@@ -200,7 +200,7 @@ describe('<FuelSavingsForm />', () => {
     // tslint:disable-next-line:no-empty
     const calculateFuelSavings: any = () => {};
 
-    const fuelSavings: IStateFuelSavings = {
+    const fuelSavings: StateFuelSavings = {
       dateModified: '',
       displayResults: false,
       milesDriven: 100,
@@ -234,7 +234,7 @@ describe('<FuelSavingsForm />', () => {
     const saveFuelSavings: any = () => {};
     const calculateFuelSavings: any = jest.fn();
 
-    const fuelSavings: IStateFuelSavings = {
+    const fuelSavings: StateFuelSavings = {
       dateModified: '',
       displayResults: false,
       milesDriven: 100,
@@ -269,7 +269,7 @@ describe('<FuelSavingsForm />', () => {
     const saveFuelSavings: any = () => {};
     const calculateFuelSavings: any = jest.fn();
 
-    const fuelSavings: IStateFuelSavings = {
+    const fuelSavings: StateFuelSavings = {
       dateModified: '',
       displayResults: false,
       milesDriven: 100,

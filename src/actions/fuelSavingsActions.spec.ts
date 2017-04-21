@@ -1,10 +1,8 @@
-import * as ActionTypes from '../constants/actionTypes';
-import * as ActionCreators from './fuelSavingsActions';
-
 import * as MockDate from 'mockdate';
-
-import { IStateFuelSavings } from '../interfaces';
-import {getFormattedDateTime} from '../utils/dateHelper';
+import * as ActionTypes from '../constants/actionTypes';
+import { StateFuelSavings } from '../interfaces';
+import { getFormattedDateTime } from '../utils/dateHelper';
+import * as ActionCreators from './fuelSavingsActions';
 
 describe('Actions', () => {
   let dateModified: string;
@@ -14,7 +12,7 @@ describe('Actions', () => {
   });
   afterAll(() => MockDate.reset());
 
-  const appState: IStateFuelSavings = {
+  const appState: StateFuelSavings = {
     dateModified: null,
     displayResults: false,
     milesDriven: 100,
@@ -33,10 +31,10 @@ describe('Actions', () => {
 
   it('should create an action to save fuel savings', () => {
     const dispatch = jest.fn();
-    const expected = {
+    const expected: ActionTypes.SaveFuelSavingsAction = {
+      type: ActionTypes.SAVE_FUEL_SAVINGS,
       dateModified,
       settings: appState,
-      type: ActionTypes.SAVE_FUEL_SAVINGS,
     };
 
     // we expect this to return a function since it is a thunk
@@ -51,11 +49,11 @@ describe('Actions', () => {
     const fieldName = 'newMpg';
     const value = 100;
     const actual = ActionCreators.calculateFuelSavings(appState, fieldName, value);
-    const expected = {
-      dateModified,
-      fieldName,
-      settings: appState,
+    const expected: ActionTypes.CalcFuelSavingsAction = {
       type: ActionTypes.CALCULATE_FUEL_SAVINGS,
+      dateModified,
+      settings: appState,
+      fieldName,
       value,
     };
 

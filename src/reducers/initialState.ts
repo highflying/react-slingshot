@@ -1,4 +1,4 @@
-import { IState } from '../interfaces';
+import { State } from '../interfaces';
 
 export default {
   fuelSavings: {
@@ -17,4 +17,4 @@ export default {
     tradeMpg: 0,
     tradePpg: 0,
   },
-} as IState;
+} as State;

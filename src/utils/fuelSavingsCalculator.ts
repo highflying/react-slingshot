@@ -1,4 +1,4 @@
-import { IFuelSavings, ISavings, IStateFuelSavings } from '../interfaces';
+import { FuelSavings, Savings, StateFuelSavings } from '../interfaces';
 import mathHelper from './mathHelper';
 import NumberFormatter from './numberFormatter';
 
@@ -24,7 +24,7 @@ export default class FuelSavingsCalculator {
       }
     }
 
-    public static calculateSavings(settings: IFuelSavings): ISavings {
+    public static calculateSavings(settings: FuelSavings): Savings {
       const monthlySavings = this.calculateSavingsPerMonth(settings);
 
       return {
@@ -34,7 +34,7 @@ export default class FuelSavingsCalculator {
       };
     }
 
-    public static calculateSavingsPerMonth(settings: IFuelSavings): number {
+    public static calculateSavingsPerMonth(settings: FuelSavings): number {
       if (!settings.milesDriven ) {
         return 0;
       }
@@ -50,7 +50,7 @@ export default class FuelSavingsCalculator {
       return mathHelper.roundNumber(savingsPerMonth, 2);
     }
 
-    public static necessaryDataIsProvidedToCalculateSavings(settings: IFuelSavings): boolean {
+    public static necessaryDataIsProvidedToCalculateSavings(settings: FuelSavings): boolean {
       return settings.newMpg > 0
         && settings.tradeMpg > 0
         && settings.newPpg > 0

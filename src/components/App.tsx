@@ -10,10 +10,6 @@ import NotFoundPage from './NotFoundPage';
 // version of hot reloading won't hot reload a stateless
 // component at the top-level.
 
-interface IOwnProps {
-  children: JSX.Element;
-}
-
 export default class App extends React.Component<{}, {}> {
   public render() {
     const activeStyle = { color: 'blue' };
@@ -28,9 +24,9 @@ export default class App extends React.Component<{}, {}> {
         <br/>
         <Switch>
           <Route exact={true} path="/" component={HomePage} />
-           <Route path="/fuel-savings" component={FuelSavingsPage as any} />
-           <Route path="/about" component={AboutPage} />
-           <Route component={NotFoundPage} />
+          <Route path="/fuel-savings" component={FuelSavingsPage} />
+          <Route path="/about" component={AboutPage} />
+          <Route component={NotFoundPage} />
          </Switch>
       </div>
     );

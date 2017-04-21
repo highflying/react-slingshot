@@ -1,6 +1,6 @@
 import * as objectAssign from 'object-assign';
-import {CALCULATE_FUEL_SAVINGS, SAVE_FUEL_SAVINGS} from '../constants/actionTypes';
-import { ICalcFuelSavingsAction, ISaveFuelSavingsAction, IStateFuelSavings } from '../interfaces';
+import * as types from '../constants/actionTypes';
+import { StateFuelSavings } from '../interfaces';
 import FuelSavingsCalculator from '../utils/fuelSavingsCalculator';
 import initialState from './initialState';
 
@@ -11,24 +11,22 @@ import initialState from './initialState';
 // and update values on the copy.
 export default function fuelSavingsReducer(
   state = initialState.fuelSavings,
-  action: ICalcFuelSavingsAction | ISaveFuelSavingsAction,
+  action: types.Actions,
 ) {
-  let newState: IStateFuelSavings;
+  let newState: StateFuelSavings;
 
   switch (action.type) {
-    case SAVE_FUEL_SAVINGS:
+    case types.SAVE_FUEL_SAVINGS:
       // For this example, just simulating a save by changing date modified.
       // In a real app using Redux, you might use redux-thunk and handle the async call in fuelSavingsActions.js
       return objectAssign({}, state, {dateModified: action.dateModified});
 
-    case CALCULATE_FUEL_SAVINGS:
-      const calcAction = action as ICalcFuelSavingsAction;
-
-      newState = objectAssign({}, state) as IStateFuelSavings;
-      newState[calcAction.fieldName] = calcAction.value;
+    case types.CALCULATE_FUEL_SAVINGS:
+      newState = objectAssign({}, state) as StateFuelSavings;
+      newState[action.fieldName] = action.value;
 
       newState.necessaryDataIsProvidedToCalculateSavings
-        = FuelSavingsCalculator.necessaryDataIsProvidedToCalculateSavings(newState);
+          = FuelSavingsCalculator.necessaryDataIsProvidedToCalculateSavings(newState);
       newState.dateModified = action.dateModified;
 
       if (newState.necessaryDataIsProvidedToCalculateSavings) {

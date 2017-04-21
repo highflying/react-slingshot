@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-interface IOwnProps {
+interface OwnProps {
   name: string;
-  onChange: (name: string, value: any) => any;
+  onChange: (name: string, value: string) => void;
   placeholder?: string;
   value: string | number;
 }
 
-const FuelSavingsTextInput = (props: IOwnProps) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+const FuelSavingsTextInput = (props: OwnProps) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     props.onChange(props.name, e.target.value);
   };
 

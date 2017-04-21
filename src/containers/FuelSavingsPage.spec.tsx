@@ -12,7 +12,13 @@ describe('<FuelSavingsPage />', () => {
       saveFuelSavings: () => {},
     };
     const fuelSavings = {};
-    const wrapper = shallow(<FuelSavingsPage actions={actions as any} fuelSavings={fuelSavings as any}/>);
+    const wrapper = shallow(
+      <FuelSavingsPage
+        calculateFuelSavings={actions.calculateFuelSavings}
+        saveFuelSavings={actions.saveFuelSavings}
+        fuelSavings={fuelSavings as any}
+      />,
+    );
 
     expect(wrapper.find(FuelSavingsForm).length).toEqual(1);
   });

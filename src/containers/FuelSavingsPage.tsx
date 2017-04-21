@@ -1,43 +1,33 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as actions from '../actions/fuelSavingsActions';
+import { connect } from 'react-redux';
+import { ActionCreatorsMapObject, Dispatch } from 'redux';
+import { calculateFuelSavings, saveFuelSavings } from '../actions/fuelSavingsActions';
 import FuelSavingsForm from '../components/FuelSavingsForm';
-import { IFuelSavings, IState, IStateFuelSavings } from '../interfaces';
+import { FuelSavings, State, StateFuelSavings } from '../interfaces';
 
-interface IActions {
-  saveFuelSavings: (savings: IFuelSavings) => never;
-  calculateFuelSavings: (savings: IFuelSavings, name: string, value: any) => never;
+interface OwnProps {
+  saveFuelSavings: (savings: FuelSavings) => void;
+  calculateFuelSavings: (savings: FuelSavings, name: string, value: any) => void;
+  fuelSavings: StateFuelSavings;
 }
 
-interface IOwnProps {
-  actions: IActions;
-  fuelSavings: IStateFuelSavings;
-}
-
-export const FuelSavingsPage = (props: IOwnProps) => {
+export const FuelSavingsPage = (props: OwnProps) => {
   return (
     <FuelSavingsForm
-      saveFuelSavings={props.actions.saveFuelSavings}
-      calculateFuelSavings={props.actions.calculateFuelSavings}
+      saveFuelSavings={props.saveFuelSavings}
+      calculateFuelSavings={props.calculateFuelSavings}
       fuelSavings={props.fuelSavings}
     />
   );
 };
 
-function mapStateToProps(state: IState) {
+function mapStateToProps(state: State): { fuelSavings: StateFuelSavings } {
   return {
     fuelSavings: state.fuelSavings,
   };
 }
 
-function mapDispatchToProps(dispatch: (param: any) => {}) {
-  return {
-    actions: bindActionCreators(actions as any, dispatch),
-  };
-}
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(FuelSavingsPage);
+  {saveFuelSavings, calculateFuelSavings},
+)(FuelSavingsPage) as React.ComponentClass<void>;
