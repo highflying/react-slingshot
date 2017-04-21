@@ -1,15 +1,18 @@
 // More info on Webpack's Node API here: https://webpack.github.io/docs/node.js-api.html
 // Allowing console calls below since this is a build file.
-/* eslint-disable no-console */
-import webpack from 'webpack';
-import config from '../webpack.config.prod';
-import {chalkError, chalkSuccess, chalkWarning, chalkProcessing} from './chalkConfig';
 
-process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
+// tslint:disable:no-console
+
+import * as webpack from 'webpack';
+import config from '../webpack.config.prod';
+import {chalkError, chalkProcessing, chalkSuccess, chalkWarning} from './chalkConfig';
+
+// this assures React is built in prod mode and that the Babel dev config doesn't apply.
+process.env.NODE_ENV = 'production';
 
 console.log(chalkProcessing('Generating minified bundle. This will take a moment...'));
 
-webpack(config).run((error, stats) => {
+webpack(config).run((error: Error, stats: webpack.Stats) => {
   if (error) { // so a fatal error occurred. Stop here.
     console.log(chalkError(error));
     return 1;
@@ -18,12 +21,12 @@ webpack(config).run((error, stats) => {
   const jsonStats = stats.toJson();
 
   if (jsonStats.hasErrors) {
-    return jsonStats.errors.map(error => console.log(chalkError(error)));
+    return jsonStats.errors.map((jsonError: Error) => console.log(chalkError(jsonError)));
   }
 
   if (jsonStats.hasWarnings) {
     console.log(chalkWarning('Webpack generated the following warnings: '));
-    jsonStats.warnings.map(warning => console.log(chalkWarning(warning)));
+    jsonStats.warnings.map((warning: string) => console.log(chalkWarning(warning)));
   }
 
   console.log(`Webpack stats: ${stats}`);

@@ -6,11 +6,12 @@ const args = [
   ...harmonyProxies,
   'node_modules/jest/bin/jest',
   // First two args are always node and the script running, i.e. ['node', './tools/testCi.js', ...]
-  ...process.argv.slice(2)
+  ...process.argv.slice(2),
 ];
 
 const testCi = spawn('node', args);
-const consoleLogger = data => console.log(`${data}`); // eslint-disable-line no-console
+// tslint:disable-next-line:no-console
+const consoleLogger = (data: any) => console.log(`${data}`);
 
 testCi.stdout.on('data', consoleLogger);
 testCi.stderr.on('data', consoleLogger);
